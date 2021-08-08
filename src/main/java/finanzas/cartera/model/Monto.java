@@ -1,6 +1,5 @@
 package finanzas.cartera.model;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,23 +9,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cedear {
+public class Monto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
-    private String nombre;
-    @NotBlank
-    private String simbolo;
 
-    private Long cantidad;
+    private Double montoIngresado;
 
+    private Double montoRetirado;
+
+    private Double montoActual;
 }
