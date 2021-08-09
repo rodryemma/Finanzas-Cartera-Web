@@ -12,18 +12,19 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class ObliNeg {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank
     private String nombre;
+
     @NotBlank
     private String simbolo;
+
     private Long cantidad;
 }

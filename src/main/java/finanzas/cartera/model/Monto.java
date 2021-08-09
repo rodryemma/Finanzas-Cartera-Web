@@ -11,10 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class Monto {
 
     @Id

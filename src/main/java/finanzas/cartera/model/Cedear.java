@@ -13,10 +13,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class Cedear {
 
     @Id
