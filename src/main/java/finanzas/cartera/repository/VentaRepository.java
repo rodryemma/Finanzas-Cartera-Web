@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VentaRepository extends JpaRepository<Venta,Long> {
-    
+
 }
