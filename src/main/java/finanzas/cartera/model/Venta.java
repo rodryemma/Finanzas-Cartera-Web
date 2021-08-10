@@ -10,10 +10,8 @@ import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
 public class Venta {
 
     @Id
