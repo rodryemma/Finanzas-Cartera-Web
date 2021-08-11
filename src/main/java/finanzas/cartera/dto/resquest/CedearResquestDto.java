@@ -7,9 +7,9 @@ import javax.validation.constraints.NotBlank;
 @Getter @Setter
 public class CedearResquestDto {
 
-    @NotBlank
+    @NotBlank(message = "cedear.error.blank.nombre")
     private String nombre;
-    @NotBlank
+    @NotBlank(message = "cedear.error.blank.simbolo")
     private String simbolo;
 
     private Long cantidad;

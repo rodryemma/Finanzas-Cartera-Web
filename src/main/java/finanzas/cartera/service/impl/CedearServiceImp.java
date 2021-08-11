@@ -43,7 +43,18 @@ public class CedearServiceImp implements ICedear {
 
     @Override
     public CedearResponseDto updateCedear(Long id, CedearResquestDto cedearDto) {
-        return null;
+
+     Cedear cedear = getCedearById(id);
+
+     if(!cedearDto.getNombre().isBlank())
+        	cedear.setNombre(cedearDto.getNombre());
+     if(!cedearDto.getSimbolo().isBlank())
+        	cedear.setSimbolo(cedearDto.getSimbolo());
+     if(!cedearDto.getCantidad().equals(null))
+        	cedear.setCantidad(cedearDto.getCantidad());
+
+      return projectionFactory.createProjection(CedearResponseDto.class, cedearRepository.save(cedear));
+
     }
 
     @Override

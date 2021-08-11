@@ -53,4 +53,16 @@ public class CedearController {
         }
 
     }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateCedear(@PathVariable Long id, @RequestBody CedearResquestDto cedearRequestDto) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(IcedearService.updateCedear(id,cedearRequestDto));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
 }

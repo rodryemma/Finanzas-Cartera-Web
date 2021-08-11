@@ -18,11 +18,11 @@ public class Cedear {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "cedear.error.blank.nombre")
     @Column(nullable = false)
     private String nombre;
 
-    @NotBlank
+    @NotBlank(message = "cedear.error.blank.simbolo")
     @Column(nullable = false)
     private String simbolo;
 
