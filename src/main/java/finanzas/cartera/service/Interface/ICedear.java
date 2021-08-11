@@ -15,7 +15,7 @@ public interface ICedear {
 
     List<CedearResponseDto> getAllCedear();
 
-    void deleteCedear(Long id);
+    String deleteCedear(Long id);
 
     Cedear getCedearById(Long id);
 

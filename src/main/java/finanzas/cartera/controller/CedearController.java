@@ -2,10 +2,12 @@ package finanzas.cartera.controller;
 
 import finanzas.cartera.dto.response.CedearResponseDto;
 import finanzas.cartera.dto.resquest.CedearResquestDto;
+import finanzas.cartera.model.Cedear;
 import finanzas.cartera.service.Interface.ICedear;
 import finanzas.cartera.service.impl.CedearServiceImp;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.data.projection.ProjectionFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/cedears")
@@ -20,11 +23,13 @@ public class CedearController {
 
     private final ICedear IcedearService;
     private final ProjectionFactory projectionFactory;
+    private final MessageSource messageSource;
 
     @Autowired
-    public CedearController (ICedear IcedearService,ProjectionFactory projectionFactory){
+    public CedearController (ICedear IcedearService,ProjectionFactory projectionFactory,MessageSource messageSource){
         this.IcedearService = IcedearService;
         this.projectionFactory = projectionFactory;
+        this.messageSource = messageSource;
     }
 
     @PostMapping
@@ -64,5 +69,19 @@ public class CedearController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
+
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<String> deleteCedearById(@PathVariable Long id) {
+        try {
+            IcedearService.deleteCedear(id);
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(messageSource.getMessage("cedear.delete.successful", null, Locale.getDefault()));
+        } catch (Exception e) {
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+
 
 }

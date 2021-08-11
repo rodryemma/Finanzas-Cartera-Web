@@ -63,7 +63,14 @@ public class CedearServiceImp implements ICedear {
     }
 
     @Override
-    public void deleteCedear(Long id) {
+    public String deleteCedear(Long id) {
+
+          Cedear cedear = getCedearById(id);
+          cedearRepository.delete(cedear);
+
+          return messageSource.getMessage(
+                  "cedear.delete.successful", null, Locale.getDefault()
+            );
 
     }
 
