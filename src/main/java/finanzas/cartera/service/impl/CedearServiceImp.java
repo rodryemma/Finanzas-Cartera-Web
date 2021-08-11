@@ -25,11 +25,11 @@ public class CedearServiceImp implements ICedear {
 
 
     @Override
-    public CedearResponseDto createCedear(CedearResquestDto CedearResquestDto) {
+    public CedearResponseDto createCedear(CedearResquestDto cedearResquestDto) {
         Cedear cedear= Cedear.builder()
-                .nombre(CedearResquestDto.getNombre())
-                .simbolo(CedearResquestDto.getSimbolo())
-                .cantidad(CedearResquestDto.getCantidad())
+                .nombre(cedearResquestDto.getNombre())
+                .simbolo(cedearResquestDto.getSimbolo())
+                .cantidad(cedearResquestDto.getCantidad())
                 .build();
         Cedear cedearCreated = cedearRepository.save(cedear);
 
@@ -37,13 +37,13 @@ public class CedearServiceImp implements ICedear {
     }
 
     @Override
-    public CedearResponseDto updateCedear(Long id, CedearResquestDto CedearDto) {
+    public CedearResponseDto updateCedear(Long id, CedearResquestDto cedearDto) {
         return null;
     }
 
     @Override
     public List<CedearResponseDto> getAllCedear() {
-        return null;
+        return cedearRepository.findAllProjectedBy();
     }
 
     @Override
