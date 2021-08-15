@@ -65,7 +65,15 @@ public class CompraServiceImpl implements ICompra {
     }
 
     @Override
-    public void deleteCompra(Long id) {
+    public String deleteCompra(Long id) {
+
+    Compra compra = getCompraById(id);
+          compraRepository.delete(compra);
+
+          return messageSource.getMessage(
+                  "compra.delete.successful", null, Locale.getDefault()
+            );
+
 
     }
 

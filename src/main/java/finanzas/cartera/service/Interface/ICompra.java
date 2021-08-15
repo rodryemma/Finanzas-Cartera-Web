@@ -14,7 +14,7 @@ public interface ICompra {
 
     List<CompraResponseDto> getAllCompra();
 
-    void deleteCompra(Long id);
+    String deleteCompra(Long id);
 
     Compra getCompraById(Long id);
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/cedears/compra")
@@ -61,6 +62,15 @@ public class CompraController {
         }
     }
 
-
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<String> deleteCompraById(@PathVariable Long id) {
+        try {
+            iCompraService.deleteCompra(id);
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(messageSource.getMessage("compra.delete.successful", null, Locale.getDefault()));
+        } catch (Exception e) {
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
 
 }
