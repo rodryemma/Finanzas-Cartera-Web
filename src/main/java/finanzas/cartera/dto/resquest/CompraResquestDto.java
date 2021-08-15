@@ -3,19 +3,19 @@ package finanzas.cartera.dto.resquest;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 @Getter @Setter
 public class CompraResquestDto {
 
     private Long nroCompra;
 
-    @NotBlank
+    @NotNull(message = "{compra.error.null.preciocomprap}")
     private Double precioCompraP;
 
-    @NotBlank
+    @NotNull(message = "{compra.error.null.preciocomprad}")
     private Double precioCompraD;
 
-    @NotBlank
+    @NotNull(message = "{compra.error.null.cantidadcompra}")
     private Long cantidadCompra;
-
 }

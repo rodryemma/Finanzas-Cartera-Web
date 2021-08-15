@@ -9,5 +9,6 @@ public interface CedearResponseDto {
     String getNombre();
     String getSimbolo();
     Long getCantidad();
+    Boolean getDeleted();
 
 }

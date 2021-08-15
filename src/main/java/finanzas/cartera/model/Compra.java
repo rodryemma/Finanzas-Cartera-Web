@@ -1,17 +1,21 @@
 package finanzas.cartera.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
+@Table(name="compra")
+@SQLDelete(sql = "UPDATE compra SET deleted = true WHERE id=?")
+@Where(clause = "deleted = false")
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
+@Builder
 public class Compra {
 
     @Id
@@ -20,13 +24,16 @@ public class Compra {
 
     private Long nroCompra;
 
-    @NotBlank
+    @NotNull(message = "{compra.error.null.preciocomprap}")
+    @Column(nullable = false)
     private Double precioCompraP;
 
-    @NotBlank
+    @NotNull(message = "{compra.error.null.preciocomprad}")
+    @Column(nullable = false)
     private Double precioCompraD;
 
-    @NotBlank
+    @NotNull(message = "{compra.error.null.cantidadcompra}")
+    @Column(nullable = false)
     private Long cantidadCompra;
 
     @Column(name = "created_date", updatable = false, nullable = false)
@@ -36,5 +43,7 @@ public class Compra {
     @Column(name = "edited_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date edited;
+
+    private boolean deleted = Boolean.FALSE;
 
 }

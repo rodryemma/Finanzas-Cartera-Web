@@ -1,7 +1,9 @@
 package finanzas.cartera.dto.response;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.Date;
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 public interface CompraResponseDto {
 
     Long getId();
@@ -11,5 +13,6 @@ public interface CompraResponseDto {
     Long getCantidadCompra();
     Date getCreated();
     Date getEdited();
+    Boolean getDeleted();
 
 }
