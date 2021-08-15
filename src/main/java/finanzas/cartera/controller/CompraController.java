@@ -51,5 +51,16 @@ public class CompraController {
     }
 
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateCompra(@PathVariable Long id, @RequestBody CompraResquestDto compraRequestDto) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(iCompraService.updateCompra(id,compraRequestDto));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+
 
 }

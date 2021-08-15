@@ -50,7 +50,7 @@ public class CedearServiceImp implements ICedear {
         	cedear.setNombre(cedearDto.getNombre());
      if(!cedearDto.getSimbolo().isBlank())
         	cedear.setSimbolo(cedearDto.getSimbolo());
-     if(!cedearDto.getCantidad().equals(null))
+     if(cedearDto.getCantidad() != null)
         	cedear.setCantidad(cedearDto.getCantidad());
 
       return projectionFactory.createProjection(CedearResponseDto.class, cedearRepository.save(cedear));

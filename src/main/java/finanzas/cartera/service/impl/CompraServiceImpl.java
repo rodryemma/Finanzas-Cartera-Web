@@ -10,8 +10,10 @@ import org.springframework.context.MessageSource;
 import org.springframework.data.projection.ProjectionFactory;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class CompraServiceImpl implements ICompra {
@@ -41,8 +43,20 @@ public class CompraServiceImpl implements ICompra {
     }
 
     @Override
-    public CompraResponseDto updateCompra(Long id, CompraResquestDto CompraDto) {
-        return null;
+    public CompraResponseDto updateCompra(Long id, CompraResquestDto compraDto) {
+
+     Compra compra = getCompraById(id);
+
+     if(compraDto.getNroCompra() != null)
+        	compra.setNroCompra(compraDto.getNroCompra());
+     if(compraDto.getCantidadCompra() != null)
+        	compra.setCantidadCompra(compraDto.getCantidadCompra());
+     if(compraDto.getPrecioCompraP() != null)
+            compra.setPrecioCompraP(compraDto.getPrecioCompraP());
+     if(compraDto.getPrecioCompraD() != null)
+            compra.setPrecioCompraD(compraDto.getPrecioCompraD());
+     compra.setEdited(new Date());
+      return projectionFactory.createProjection(CompraResponseDto.class, compraRepository.save(compra));
     }
 
     @Override
@@ -57,7 +71,12 @@ public class CompraServiceImpl implements ICompra {
 
     @Override
     public Compra getCompraById(Long id) {
-        return null;
+         return compraRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException(
+                        messageSource.getMessage("compra.error.not.found", null, Locale.getDefault())
+                )
+        );
+
     }
 
 }
