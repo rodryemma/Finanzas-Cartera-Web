@@ -10,7 +10,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.data.projection.ProjectionFactory;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class MontoServiceImpl implements IMonto {
@@ -43,22 +45,46 @@ public class MontoServiceImpl implements IMonto {
     }
 
     @Override
-    public MontoResponseDto updateMonto(Long id, MontoResquestDto MontoDto) {
-        return null;
+    public MontoResponseDto updateMonto(Long id, MontoResquestDto montoDto) {
+
+        Monto monto= getMontoById(id);
+
+     if(montoDto.getMontoIngresado() != null)
+        	monto.setMontoIngresado(montoDto.getMontoIngresado());
+     if(montoDto.getMontoActual() != null)
+        	monto.setMontoActual(montoDto.getMontoActual());
+     if(montoDto.getMontoRetirado() != null)
+            monto.setMontoRetirado(montoDto.getMontoRetirado());
+
+      return projectionFactory.createProjection(MontoResponseDto.class, montoRepository.save(monto));
+
     }
 
     @Override
     public List<MontoResponseDto> getAllMonto() {
-        return null;
+        return montoRepository.findAllProjectedBy();
     }
 
     @Override
-    public void deleteMonto(Long id) {
+    public String deleteMonto(Long id) {
+
+    Monto monto = getMontoById(id);
+          montoRepository.delete(monto);
+
+          return messageSource.getMessage(
+                  "monto.delete.successful", null, Locale.getDefault()
+            );
 
     }
 
     @Override
     public Monto getMontoById(Long id) {
-        return null;
+
+        return montoRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException(
+                        messageSource.getMessage("monto.error.not.found", null, Locale.getDefault())
+                )
+        );
+
     }
 }

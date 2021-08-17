@@ -14,7 +14,7 @@ public interface IMonto {
 
     List<MontoResponseDto> getAllMonto();
 
-    void deleteMonto(Long id);
+    String deleteMonto(Long id);
 
     Monto getMontoById(Long id);
 
