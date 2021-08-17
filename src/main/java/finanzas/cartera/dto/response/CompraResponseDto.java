@@ -13,6 +13,5 @@ public interface CompraResponseDto {
     Long getCantidadCompra();
     Date getCreated();
     Date getEdited();
-    Boolean getDeleted();
 
 }

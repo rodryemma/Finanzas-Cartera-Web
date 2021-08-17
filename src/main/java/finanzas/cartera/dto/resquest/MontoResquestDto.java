@@ -12,4 +12,6 @@ public class MontoResquestDto {
 
     private Double montoActual;
 
+    private boolean deleted = Boolean.FALSE;
+
 }
