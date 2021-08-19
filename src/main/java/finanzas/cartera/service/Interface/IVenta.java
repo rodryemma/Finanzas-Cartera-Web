@@ -14,7 +14,7 @@ public interface IVenta {
 
     List<VentaResponseDto> getAllVenta();
 
-    void deleteVenta(Long id);
+    String deleteVenta(Long id);
 
     Venta getVentaById(Long id);
 

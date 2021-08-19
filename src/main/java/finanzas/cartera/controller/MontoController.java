@@ -53,7 +53,7 @@ public class MontoController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateCompra(@PathVariable Long id, @RequestBody MontoResquestDto montoRequestDto) {
+    public ResponseEntity<Object> updateMonto(@PathVariable Long id, @RequestBody MontoResquestDto montoRequestDto) {
         try {
             return ResponseEntity.status(HttpStatus.OK)
                     .body(iMontoService.updateMonto(id,montoRequestDto));

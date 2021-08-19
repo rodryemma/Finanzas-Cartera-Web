@@ -11,6 +11,4 @@ public interface VentaResponseDto {
     Long getCantidadVenta();
     Double getDifVentaCompraP();
     Double getDifVentaCompraD();
-    Date getCreated();
-    Date getEdited();
 }
