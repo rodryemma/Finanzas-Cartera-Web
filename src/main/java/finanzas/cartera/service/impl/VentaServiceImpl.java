@@ -80,7 +80,11 @@ public class VentaServiceImpl implements IVenta {
 
     @Override
     public String deleteVenta(Long id) {
-        return null;
+        Venta venta = getVentaById(id);
+        ventaRepository.delete(venta);
+        return messageSource.getMessage(
+                "venta.delete.successful", null, Locale.getDefault()
+        );
     }
 
     @Override

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("cedears/venta")
@@ -60,6 +61,18 @@ public class VentaController {
                     .body(iVentaService.updateVenta(id,ventaRequestDto));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<String> deleteVentaById(@PathVariable Long id) {
+        try {
+            iVentaService.deleteVenta(id);
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(messageSource.getMessage("venta.delete.successful", null, Locale.getDefault()));
+        } catch (Exception e) {
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 
