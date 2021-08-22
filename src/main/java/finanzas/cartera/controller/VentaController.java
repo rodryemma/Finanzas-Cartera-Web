@@ -52,6 +52,16 @@ public class VentaController {
     public ResponseEntity<List<VentaResponseDto>> getAllVenta(){
         return ResponseEntity.status(HttpStatus.OK).body(iVentaService.getAllVenta());
     }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getIdVenta(@PathVariable Long id) {
+        try{
+             return ResponseEntity.status(HttpStatus.OK)
+                      .body(iVentaService.getVentaDtoById(id));
+        } catch (Exception e) {
+             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
 
 
     @PutMapping("/{id}")

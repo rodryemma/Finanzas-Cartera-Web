@@ -97,4 +97,14 @@ public class VentaServiceImpl implements IVenta {
         );
 
     }
+
+    @Override
+    public VentaResponseDto getVentaDtoById(Long id) {
+
+        return projectionFactory.createProjection(VentaResponseDto.class, ventaRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException(
+                        messageSource.getMessage("venta.error.not.found", null, Locale.getDefault())))
+                );
+
+    }
 }

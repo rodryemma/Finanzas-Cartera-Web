@@ -18,4 +18,6 @@ public interface IVenta {
 
     Venta getVentaById(Long id);
 
+    VentaResponseDto getVentaDtoById(Long id);
+
 }

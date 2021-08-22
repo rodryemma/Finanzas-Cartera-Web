@@ -54,12 +54,12 @@ public class CompraController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getIdCompra(@PathVariable Long id) {
-    try{
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body(iCompraService.getCompraDtoById(id));
-    } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-    }
+        try{
+             return ResponseEntity.status(HttpStatus.OK)
+                      .body(iCompraService.getCompraDtoById(id));
+        } catch (Exception e) {
+             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
 
