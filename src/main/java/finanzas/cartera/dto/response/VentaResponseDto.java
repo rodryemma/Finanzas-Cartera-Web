@@ -11,4 +11,9 @@ public interface VentaResponseDto {
     Long getCantidadVenta();
     Double getDifVentaCompraP();
     Double getDifVentaCompraD();
+    Cedear getCedear();
+
+    interface Cedear {
+        Long getId();
+    }
 }

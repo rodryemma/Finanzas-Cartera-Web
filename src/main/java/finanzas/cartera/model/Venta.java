@@ -40,6 +40,7 @@ public class Venta {
 
     private Double difVentaCompraD;
 
+
     @Column(name = "created_date", updatable = false, nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
@@ -49,5 +50,10 @@ public class Venta {
     private Date edited;
 
     private boolean deleted = Boolean.FALSE;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cedear")
+
+    private Cedear cedear;
 
 }

@@ -46,4 +46,9 @@ public class Compra {
 
     private boolean deleted = Boolean.FALSE;
 
+    @ManyToOne
+    @JoinColumn(name = "id_cedear")
+
+    private Cedear cedear;
+
 }

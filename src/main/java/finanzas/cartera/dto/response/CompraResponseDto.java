@@ -13,5 +13,10 @@ public interface CompraResponseDto {
     Long getCantidadCompra();
     Date getCreated();
     Date getEdited();
+    Cedear getCedear();
+
+    interface Cedear {
+        Long getId();
+    }
 
 }
