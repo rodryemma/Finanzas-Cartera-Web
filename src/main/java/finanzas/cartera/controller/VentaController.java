@@ -52,7 +52,7 @@ public class VentaController {
     public ResponseEntity<List<VentaResponseDto>> getAllVenta(){
         return ResponseEntity.status(HttpStatus.OK).body(iVentaService.getAllVenta());
     }
-    
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getIdVenta(@PathVariable Long id) {
         try{
