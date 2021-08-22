@@ -2,6 +2,7 @@ package finanzas.cartera.controller;
 
 import finanzas.cartera.dto.response.CompraResponseDto;
 import finanzas.cartera.dto.resquest.CompraResquestDto;
+import finanzas.cartera.model.Compra;
 import finanzas.cartera.service.Interface.ICompra;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -49,6 +50,16 @@ public class CompraController {
     @GetMapping
     public ResponseEntity<List<CompraResponseDto>> getAllCompra() {
         return ResponseEntity.status(HttpStatus.OK).body(iCompraService.getAllCompra());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getIdCompra(@PathVariable Long id) {
+    try{
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(iCompraService.getCompraDtoById(id));
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
     }
 
 

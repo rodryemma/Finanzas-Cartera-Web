@@ -87,4 +87,13 @@ public class CompraServiceImpl implements ICompra {
 
     }
 
+    @Override
+    public CompraResponseDto getCompraDtoById(Long id) {
+        return projectionFactory.createProjection(CompraResponseDto.class, compraRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException(
+                        messageSource.getMessage("compra.error.not.found", null, Locale.getDefault())))
+                );
+
+    }
+
 }

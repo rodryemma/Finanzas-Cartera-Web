@@ -18,4 +18,6 @@ public interface ICompra {
 
     Compra getCompraById(Long id);
 
+    CompraResponseDto getCompraDtoById(Long id);
+
 }
