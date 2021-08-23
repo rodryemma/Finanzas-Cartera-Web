@@ -96,4 +96,9 @@ public class CompraServiceImpl implements ICompra {
 
     }
 
+    @Override
+    public Double getCompraAvg(Long idCedear) {
+        return compraRepository.findCompraAvgById(idCedear);
+    }
+
 }

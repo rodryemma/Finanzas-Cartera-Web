@@ -20,4 +20,6 @@ public interface ICompra {
 
     CompraResponseDto getCompraDtoById(Long id);
 
+    Double getCompraAvg(Long idCedear);
+
 }

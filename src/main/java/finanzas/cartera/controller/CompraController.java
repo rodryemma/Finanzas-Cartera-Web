@@ -1,5 +1,7 @@
 package finanzas.cartera.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import finanzas.cartera.dto.response.CompraResponseDto;
 import finanzas.cartera.dto.resquest.CompraResquestDto;
 import finanzas.cartera.model.Compra;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -59,6 +62,19 @@ public class CompraController {
                       .body(iCompraService.getCompraDtoById(id));
         } catch (Exception e) {
              return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/avg/{idCedear}")
+    public ResponseEntity<Object> getCompraPPP(@PathVariable  Long idCedear) {
+
+        System.out.println(idCedear);
+        System.out.println(iCompraService.getCompraAvg(idCedear));
+        try{
+            return ResponseEntity.status(HttpStatus.CREATED).body(
+                    Collections.singletonMap("PPP", iCompraService.getCompraAvg(idCedear)));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 
