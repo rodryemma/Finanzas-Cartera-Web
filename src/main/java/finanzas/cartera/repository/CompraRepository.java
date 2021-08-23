@@ -17,5 +17,11 @@ public interface CompraRepository extends JpaRepository<Compra,Long> {
 
 
     @Query(value = "SELECT avg(precioCompraP) FROM compra c where c.id_cedear= :idCedear", nativeQuery=true)
-    Double findCompraAvgById(Long idCedear);
+    Double findCompraArsAvgById(Long idCedear);
+
+    @Query(value = "SELECT sum(precioCompraP) FROM compra c where c.id_cedear= :idCedear", nativeQuery=true)
+    Double findCompraArsSumById(Long idCedear);
+
+    @Query(value = "SELECT sum(cantidadCompra) FROM compra c where c.id_cedear= :idCedear", nativeQuery=true)
+    Long findCompraCantidadById(Long idCedear);
 }
