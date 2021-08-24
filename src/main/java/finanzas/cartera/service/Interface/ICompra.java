@@ -24,6 +24,10 @@ public interface ICompra {
 
     Double getCompraMontoArs(Long idCedear);
 
+    Double getCompraAvgDol(Long idCedear);
+
+    Double getCompraMontoDol(Long idCedear);
+
     Long getCompraCantidad(Long idCedear);
 
 }

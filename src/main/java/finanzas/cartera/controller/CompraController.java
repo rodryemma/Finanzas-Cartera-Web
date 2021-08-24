@@ -91,6 +91,32 @@ public class CompraController {
         }
     }
 
+    @GetMapping("/avgD/{idCedear}")
+    public ResponseEntity<Object> getCompraDolPPP(@PathVariable  Long idCedear) {
+
+        System.out.println(idCedear);
+        System.out.println(iCompraService.getCompraAvgDol(idCedear));
+        try{
+            return ResponseEntity.status(HttpStatus.CREATED).body(
+                    Collections.singletonMap("PPP Dolar", iCompraService.getCompraAvgDol(idCedear)));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/sumD/{idCedear}")
+    public ResponseEntity<Object> getCompraDolMonto(@PathVariable  Long idCedear) {
+
+        System.out.println(idCedear);
+        System.out.println(iCompraService.getCompraMontoDol(idCedear));
+        try{
+            return ResponseEntity.status(HttpStatus.CREATED).body(
+                    Collections.singletonMap("Monto total Dolar", iCompraService.getCompraMontoDol(idCedear)));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
     @GetMapping("/cantidad/{idCedear}")
     public ResponseEntity<Object> getCompraCantidad(@PathVariable  Long idCedear) {
 
