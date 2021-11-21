@@ -1,4 +1,4 @@
-package finanzas.cartera.controller;
+package finanzas.cartera.controllerRest;
 
 
 import finanzas.cartera.dto.response.VentaResponseDto;

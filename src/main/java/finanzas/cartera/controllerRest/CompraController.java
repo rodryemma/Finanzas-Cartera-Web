@@ -1,10 +1,7 @@
-package finanzas.cartera.controller;
+package finanzas.cartera.controllerRest;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import finanzas.cartera.dto.response.CompraResponseDto;
 import finanzas.cartera.dto.resquest.CompraResquestDto;
-import finanzas.cartera.model.Compra;
 import finanzas.cartera.service.Interface.ICompra;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
