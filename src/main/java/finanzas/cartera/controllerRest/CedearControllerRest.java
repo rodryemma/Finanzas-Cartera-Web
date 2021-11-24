@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Locale;
 
-@RestController
+//@RestController
 @RequestMapping("/cedears")
 public class CedearControllerRest {
 

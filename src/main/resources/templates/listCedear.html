@@ -13,14 +13,20 @@
                 <th>Nombre</th>
                 <th>Simbolo</th>
                 <th>Cantidad</th>
+                <th>PPCArs</th>
             </tr>
+
         </thead>
         <tbody>
-            <tr th:each="cedear:${CedearResponseDto}">
-                <td th:text="${cedear.nombre}"></td>
-                <td th:text="${cedear.simbolo}"></td>
-                <td th:text="${cedear.cantidad}"></td>
+            <th:block th:each="cedear:${CedearResponseDto}" >
+            <tr th:each="PPCARS:${PPCARSCedear}" th:if="${cedear.id == PPCARS.idCedear}"  >
+                <td  th:text="${cedear.nombre}"></td>
+                <td  th:text="${cedear.simbolo}"></td>
+                <td  th:text="${cedear.cantidad}"></td>
+                <td  th:text="${PPCARS.PPC}"></td>
             </tr>
+
+            </th:block>
         </tbody>
     </table>
 </body>
