@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}"></title>
+    <link  rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+
+<div class="container">
+    <h1 th:text="${titulo}" class="text-secondary border border-success border-top-0 border-left-0 border-right-0" ></h1>
+    <form th:action="@{/cedear/form}" th:object="${cedear}" method="post">
+        <table>
+
+            <tr>
+                <td>Nombre</td>
+                <td><input type="text" th:field="*{nombre}" class="form-control"/></td>
+            </tr>
+
+            <tr>
+                <td>Simbolo</td>
+                <td><input type="text" th:field="*{simbolo}" class="form-control"/></td>
+            </tr>
+
+            <tr>
+                <td>Cantidad</td>
+                <td><input type="text" th:field="*{cantidad}" class="form-control"/></td>
+            </tr>
+
+            <tr>
+                <td><input type="submit" value="Crear Cedear" class="btn btn-primary"/></td>
+            </tr>
+
+        </table>
+        <input type="hidden" th:field="*{id}"/>
+    </form>
+</div>
+</body>
+</html>

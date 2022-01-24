@@ -2,22 +2,29 @@ package finanzas.cartera.controller;
 
 import finanzas.cartera.dto.response.CedearResponseDto;
 import finanzas.cartera.dto.response.PPCCedearResponseDto;
+import finanzas.cartera.dto.resquest.CedearResquestDto;
 import finanzas.cartera.dto.resquest.PPCCedearRequestDto;
+import finanzas.cartera.model.Cedear;
 import finanzas.cartera.service.Interface.ICedear;
 import finanzas.cartera.service.Interface.ICompra;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.data.projection.ProjectionFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
-@RequestMapping("/cedears")
+@RequestMapping("/cedear")
 public class CedearController {
     private final ICompra iCompraService;
     private final ICedear IcedearService;
@@ -32,7 +39,7 @@ public class CedearController {
         this.messageSource = messageSource;
     }
 
-    @GetMapping
+    @GetMapping("/full")
     public String getAllCedear(Model model) {
         List<CedearResponseDto> CedearResponseDto = IcedearService.getAllCedear();
 
@@ -51,5 +58,20 @@ public class CedearController {
 
         model.addAttribute("PPCARSCedear",PPCArs);
         return "listCedear";
+    }
+
+
+    @GetMapping("/form")
+    public String createCedear(Map<String,Object> model){
+        Cedear cedear = new Cedear();
+        model.put("cedear",cedear);
+        model.put("titulo", "Formulario del cliente");
+        return "formCedear";
+    }
+
+    @PostMapping("/form")
+    public String saveCedear(@Valid @ModelAttribute CedearResquestDto cedearResquestDto){
+        IcedearService.createCedear(cedearResquestDto);
+        return "redirect:listCedear";
     }
 }
