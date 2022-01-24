@@ -79,6 +79,6 @@ public class CedearController {
     @PostMapping("/form")
     public String saveCedear(@Valid @ModelAttribute CedearResquestDto cedearResquestDto){
         IcedearService.createCedear(cedearResquestDto);
-        return "redirect:listCedear";
+        return "redirect:list";
     }
 }
