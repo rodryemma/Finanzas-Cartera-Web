@@ -3,31 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${titulo}"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
 </head>
 <body>
-    <h1 th:text="${titulo}"></h1>
-    <div th:if="${CedearResponseDto.isEmpty()}">No hay cedears en la lista</div>
-    <table th:if="${!CedearResponseDto.isEmpty()}">
+<div class="container">
+    <h1 th:text="${titulo}" class="text-secondary border border-success border-top-0 border-left-0 border-right-0"></h1>
+
+    <table th:if="${!cedear.isEmpty()}">
         <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Simbolo</th>
-                <th>Cantidad</th>
-                <th>PPCArs</th>
-            </tr>
-
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Simbolo</th>
+            <th>Cantidad</th>
+        </tr>
         </thead>
+
         <tbody>
-            <th:block th:each="cedear:${CedearResponseDto}" >
-            <tr th:each="PPCARS:${PPCARSCedear}" th:if="${cedear.id == PPCARS.idCedear}"  >
-                <td  th:text="${cedear.nombre}"></td>
-                <td  th:text="${cedear.simbolo}"></td>
-                <td  th:text="${cedear.cantidad}"></td>
-                <td  th:text="${PPCARS.PPC}"></td>
+        <th:block th:each="cedear:${cedear}">
+                <td th:text="${cedear.id}"></td>
+                <td th:text="${cedear.nombre}"></td>
+                <td th:text="${cedear.simbolo}"></td>
+                <td th:text="${cedear.cantidad}"></td>
             </tr>
 
-            </th:block>
+        </th:block>
         </tbody>
     </table>
+
+
+</div>
 </body>
 </html>

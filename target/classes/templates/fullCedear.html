@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+    <h1 th:text="${titulo}"></h1>
+    <div th:if="${CedearResponseDto.isEmpty()}">No hay cedears en la lista</div>
+    <table th:if="${!CedearResponseDto.isEmpty()}">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Simbolo</th>
+                <th>Cantidad</th>
+                <th>PPCArs</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <th:block th:each="cedear:${CedearResponseDto}" >
+            <tr th:each="PPCARS:${PPCARSCedear}" th:if="${cedear.id == PPCARS.idCedear}"  >
+                <td  th:text="${cedear.nombre}"></td>
+                <td  th:text="${cedear.simbolo}"></td>
+                <td  th:text="${cedear.cantidad}"></td>
+                <td  th:text="${PPCARS.PPC}"></td>
+            </tr>
+
+            </th:block>
+        </tbody>
+    </table>
+</body>
+</html>

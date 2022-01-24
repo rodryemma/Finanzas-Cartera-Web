@@ -40,7 +40,7 @@ public class CedearController {
     }
 
     @GetMapping("/full")
-    public String getAllCedear(Model model) {
+    public String getFullCedear(Model model) {
         List<CedearResponseDto> CedearResponseDto = IcedearService.getAllCedear();
 
 
@@ -57,9 +57,16 @@ public class CedearController {
         model.addAttribute("CedearResponseDto", CedearResponseDto);
 
         model.addAttribute("PPCARSCedear",PPCArs);
-        return "listCedear";
+        return "fullCedear";
     }
 
+
+    @GetMapping("/list")
+    public String getallCedear(Model model) {
+        model.addAttribute("titulo","Lista de Cedear");
+        model.addAttribute("cedear",IcedearService.getAllCedear());
+        return "listCedear";
+    }
 
     @GetMapping("/form")
     public String createCedear(Map<String,Object> model){
